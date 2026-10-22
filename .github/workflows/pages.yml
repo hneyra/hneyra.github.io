@@ -1,10 +1,11 @@
-# Builds the site with Jekyll and publishes it to GitHub Pages.
+# Builds the site with Jekyll, generates the CV PDFs, checks the links and publishes to GitHub Pages.
 # In the repository: Settings → Pages → Build and deployment → Source: GitHub Actions.
 name: Deploy site to GitHub Pages
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -14,7 +15,7 @@ permissions:
 
 # One deployment at a time; let a running one finish
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -22,18 +23,48 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+
       # Ruby version comes from .ruby-version
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+
       - id: pages
         uses: actions/configure-pages@v6
-      - run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      - name: Build site
+        run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+
+      - name: Install Chromium for PDF generation
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          # Roboto is in the site's font stack; without it Linux falls back to DejaVu
+          sudo apt-get install -y --no-install-recommends fonts-roboto
+
+      # Prints each language version to the file its "Download CV" button links to,
+      # so the published PDFs always match the published page
+      - name: Generate CV PDFs
+        run: node scripts/build-pdf.mjs --site _site --baseurl "${{ steps.pages.outputs.base_path }}"
+
+      # Fails the deployment if any internal link, image or PDF is missing
+      - name: Check links
+        run: python3 scripts/check-links.py _site "${{ steps.pages.outputs.base_path }}"
+
       - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
 
   deploy:
+    # Pull requests only build and check; they never publish
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:

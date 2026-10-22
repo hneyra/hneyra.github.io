@@ -20,6 +20,8 @@ demo_label: Demo
 link_label: Sitio web
 verify_label: Verificar credencial
 client_label: Cliente
+minimal_label: Versión minimalista
+full_label: Versión completa
 theme_names:
   navy: Azul marino
   terracotta: Terracota
@@ -46,18 +48,18 @@ about:
       mantenimiento— hasta la entrega final del producto, con énfasis en la calidad del código:
       código limpio, principios SOLID y patrones de diseño.
     - >-
-      En idealo desarrollo microservicios en Java y Spring Boot que corren en AWS EKS, con Kafka,
-      Docker, infraestructura como código (Terraform, Pulumi), Grafana y React. También he trabajado
-      en la migración a AWS de las aplicaciones de ventas B2B y en soluciones de integración y de
-      workflows en torno a Salesforce para la división comercial. Antes diseñé la arquitectura de plataformas cloud basadas en Spring, RabbitMQ y las APIs de
-      Microsoft Graph, y un conector bidireccional Salesforce–JIRA.
+      En idealo tengo la responsabilidad técnica end-to-end de mis proyectos y desarrollo microservicios
+      en Java y Spring Boot que corren en AWS EKS, con Kafka, Docker, infraestructura como código
+      (Terraform, Pulumi), Grafana y React, además de soluciones de integración, workflows y Salesforce
+      para la división comercial. Antes diseñé la arquitectura de plataformas cloud basadas en Spring,
+      RabbitMQ y las APIs de Microsoft Graph, y un conector bidireccional Salesforce–JIRA.
   facts:
     - value: "2006"
       label: desarrollando software profesionalmente desde
     - value: Java · Spring Boot · AWS
       label: microservicios en idealo
     - value: "2.º en Perú"
-      label: concurso de programación ACM-ICPC, 2004
+      label: ACM-ICPC Regional Contest, 2004
 
 # Sección de contacto al final de la página
 contact:
@@ -86,10 +88,10 @@ sections:
         dates: ene. 2020 – actualidad
         text: Microservicios en Java y Spring Boot sobre AWS (EKS), con Kafka, Docker e infraestructura como código (Terraform, Pulumi).
         bullets:
-          - Desarrollo de microservicios Spring Boot que corren en AWS EKS, con mensajería en Kafka, monitorización con Grafana y pruebas con JUnit; desarrollo front-end en React.
-          - "Migración a AWS de las aplicaciones de ventas B2B de idealo: planificación, estrategia e implementación."
-          - Arquitectura y desarrollo de soluciones de integración y de gestión de workflows para diversas aplicaciones de la división comercial de idealo.
-          - Desarrollador y administrador de Salesforce para los procesos de negocio B2B de idealo.
+          - "Responsabilidad técnica end-to-end: gestión de proyectos desde el análisis de requisitos y el diseño de soluciones hasta la implementación, el despliegue, el mantenimiento y el soporte."
+          - "Desarrollo de microservicios: implementación de servicios con Spring Boot en AWS EKS, integración mediante Kafka, monitorización con Grafana y pruebas automatizadas con JUnit. Desarrollo frontend con React."
+          - "Arquitectura e integración: diseño y desarrollo de soluciones de integración y gestión de workflows para aplicaciones de la división comercial de idealo."
+          - "Desarrollo Salesforce: implementación y mantenimiento de soluciones Salesforce para los procesos de negocio B2B."
         tags: [Java, Spring Boot, Microservicios, AWS EKS, Kafka, Docker, Terraform, Pulumi, Grafana, JUnit, React, Salesforce]
       - title: Senior Java Developer
         org: RetailCompass
@@ -103,7 +105,7 @@ sections:
         tags: [Java, Spring Boot, Web crawling, APIs REST, AWS, Amazon RDS]
       - title: Senior Software Architect · Software Development Consultant
         org: zAgile, Inc.
-        location: California, EE. UU.
+        location: California, EE. UU. (remoto)
         dates: abr. 2008 – dic. 2019
         projects:
           - title: Nuvolex Cloud Platform
@@ -215,9 +217,9 @@ sections:
     title: Reconocimientos y premios
     layout: compact
     items:
-      - title: Tercer puesto de mi promoción
+      - title: 3er Puesto en Ingeniería de Sistemas, promoción 2001
         dates: jun. 2006
-      - title: Segundo puesto en Perú, ACM-ICPC 2004
+      - title: Segundo puesto en Perú, ACM-ICPC Regional Contest 2004
         dates: nov. 2004
       - title: Reconocimiento por la contribución al desarrollo, imagen y fortalecimiento de la Escuela de Ingeniería de Producción y Servicios en su XX aniversario
         location: Arequipa, Perú
@@ -227,21 +229,21 @@ sections:
     title: Concursos de programación
     layout: compact
     items:
-      - title: Coach, ACM-ICPC 2010
+      - title: Coach, ACM-ICPC Regional Contest 2010
         location: Lima, Perú
         dates: nov. 2010
       - title: Participante, Maratona de Programação da USP 2007
         location: São Paulo, Brasil
         dates: jun. 2007
-      - title: Participante, ACM-ICPC 2005
+      - title: Participante, ACM-ICPC Regional Contest 2005
         location: Lima, Perú
         dates: nov. 2005
       - title: Participante, Google Code Jam 2005
         dates: sep. 2005
-      - title: Participante, ACM-ICPC 2004
+      - title: Participante, ACM-ICPC Regional Contest 2004
         location: Arica, Chile
         dates: nov. 2004
-      - title: Participante, ACM-ICPC 2003
+      - title: Participante, ACM-ICPC Regional Contest 2003
         location: Chillán, Chile
         dates: nov. 2003
 
@@ -276,7 +278,9 @@ sections:
     title: Intereses
     layout: pairs
     items:
-      - label: Investigación
-        text: Cloud computing y big data; web mining, crawling y scraping; desarrollo ágil y buenas prácticas; arquitectura de software y programación orientada a objetos
-      - label: Hobbies
-        text: Tocar guitarra, el fútbol y leer sobre lo último en cloud computing y ciencia de datos
+      - label: Cultura y aprendizaje
+        text: Me gusta pasear por la ciudad, descubrir nuevos lugares y leer sobre psicología para aprender y comprender mejor el comportamiento humano.
+      - label: Deporte y bienestar
+        text: Disfruto practicando deportes ligeros durante los fines de semana para mantenerme activo y desconectar de la rutina.
+      - label: Música
+        text: Me gusta dedicar tiempo a la música, especialmente practicando guitarra y teclado, como forma de expresión y aprendizaje personal.

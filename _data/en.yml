@@ -20,6 +20,8 @@ demo_label: Live demo
 link_label: Website
 verify_label: Verify credential
 client_label: Client
+minimal_label: Minimal version
+full_label: Full version
 theme_names:
   navy: Navy
   terracotta: Terracotta
@@ -46,10 +48,9 @@ about:
       maintenance — through to the final release, with an emphasis on code quality: clean code,
       SOLID principles and design patterns.
     - >-
-      At idealo I build Java and Spring Boot microservices running on AWS EKS, with Kafka, Docker,
-      infrastructure as code (Terraform, Pulumi), Grafana and React. I have also worked on the AWS
-      migration of the B2B sales applications and on integration and workflow solutions around
-      Salesforce for the commerce division. Before that I
+      At idealo I own my projects end to end and build Java and Spring Boot microservices running on
+      AWS EKS, with Kafka, Docker, infrastructure as code (Terraform, Pulumi), Grafana and React, as
+      well as integration, workflow and Salesforce solutions for the commerce division. Before that I
       designed the architecture of cloud platforms built on Spring, RabbitMQ and the Microsoft Graph
       APIs, and a bi-directional Salesforce–JIRA connector.
   facts:
@@ -58,7 +59,7 @@ about:
     - value: Java · Spring Boot · AWS
       label: microservices at idealo
     - value: "2nd in Peru"
-      label: ACM-ICPC programming contest, 2004
+      label: ACM-ICPC Regional Contest, 2004
 
 # Contact section at the end of the page
 contact:
@@ -87,10 +88,10 @@ sections:
         dates: Jan 2020 – present
         text: Microservices in Java and Spring Boot on AWS (EKS), with Kafka, Docker and infrastructure as code (Terraform, Pulumi).
         bullets:
-          - Development of Spring Boot microservices running on AWS EKS, with Kafka messaging, Grafana monitoring and JUnit tests; front-end work in React.
-          - "AWS migration of applications for idealo's B2B sales: planning, strategy and implementation."
-          - Architecture and development of integration and workflow management solutions for a variety of applications in idealo's commerce division.
-          - Salesforce developer and admin for idealo's B2B business processes.
+          - "End-to-end technical ownership: managing projects from requirements analysis and solution design through implementation, deployment, maintenance and support."
+          - "Microservices development: services built with Spring Boot on AWS EKS, integrated through Kafka, monitored with Grafana and covered by automated JUnit tests. Front-end development with React."
+          - "Architecture and integration: design and development of integration and workflow management solutions for applications in idealo's commerce division."
+          - "Salesforce development: implementation and maintenance of Salesforce solutions for B2B business processes."
         tags: [Java, Spring Boot, Microservices, AWS EKS, Kafka, Docker, Terraform, Pulumi, Grafana, JUnit, React, Salesforce]
       - title: Senior Java Developer
         org: RetailCompass
@@ -104,7 +105,7 @@ sections:
         tags: [Java, Spring Boot, Web crawling, REST APIs, AWS, Amazon RDS]
       - title: Senior Software Architect · Software Development Consultant
         org: zAgile, Inc.
-        location: California, USA
+        location: California, USA (remote)
         dates: Apr 2008 – Dec 2019
         projects:
           - title: Nuvolex Cloud Platform
@@ -216,9 +217,9 @@ sections:
     title: Recognitions and awards
     layout: compact
     items:
-      - title: Third place of my graduating class
+      - title: 3rd place in Systems Engineering, 2001 cohort
         dates: Jun 2006
-      - title: Second place in Peru, ACM-ICPC 2004
+      - title: Second place in Peru, ACM-ICPC Regional Contest 2004
         dates: Nov 2004
       - title: Recognition for contributing to the development, image and strengthening of the Production and Services Engineering School on its 20th anniversary
         location: Arequipa, Peru
@@ -228,21 +229,21 @@ sections:
     title: Programming contests
     layout: compact
     items:
-      - title: Coach, ACM-ICPC 2010
+      - title: Coach, ACM-ICPC Regional Contest 2010
         location: Lima, Peru
         dates: Nov 2010
       - title: Contestant, Maratona de Programação da USP 2007
         location: São Paulo, Brazil
         dates: Jun 2007
-      - title: Contestant, ACM-ICPC 2005
+      - title: Contestant, ACM-ICPC Regional Contest 2005
         location: Lima, Peru
         dates: Nov 2005
       - title: Contestant, Google Code Jam 2005
         dates: Sep 2005
-      - title: Contestant, ACM-ICPC 2004
+      - title: Contestant, ACM-ICPC Regional Contest 2004
         location: Arica, Chile
         dates: Nov 2004
-      - title: Contestant, ACM-ICPC 2003
+      - title: Contestant, ACM-ICPC Regional Contest 2003
         location: Chillán, Chile
         dates: Nov 2003
 
@@ -277,7 +278,9 @@ sections:
     title: Interests
     layout: pairs
     items:
-      - label: Research
-        text: Cloud computing and big data; web mining, crawling and scraping; agile development and best practices; software architecture and object-oriented programming
-      - label: Hobbies
-        text: Playing guitar, football, and reading about the latest in cloud computing and data science
+      - label: Culture and learning
+        text: I enjoy walking around the city, discovering new places and reading about psychology to learn and better understand human behaviour.
+      - label: Sport and wellbeing
+        text: I like doing light sports at weekends to stay active and switch off from the routine.
+      - label: Music
+        text: I like spending time on music, especially playing guitar and keyboard, as a form of expression and personal learning.

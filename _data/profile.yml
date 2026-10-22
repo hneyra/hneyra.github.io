@@ -8,6 +8,10 @@ photo: /assets/img/jorge-neyra-araoz.jpg
 pdf:
   en: /assets/pdf/cv-jorge-neyra-araoz-en.pdf
   es: /assets/pdf/cv-jorge-neyra-araoz-es.pdf
+# PDF of the minimal version (/min/), printed from its own design
+pdf_min:
+  en: /assets/pdf/cv-jorge-neyra-araoz-min-en.pdf
+  es: /assets/pdf/cv-jorge-neyra-araoz-min-es.pdf
 # Shown in the hero, the contact section and the footer, in this order.
 # icon: one of github, linkedin (see _includes/icon.html)
 social:

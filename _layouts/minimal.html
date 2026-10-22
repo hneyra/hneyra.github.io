@@ -1,0 +1,128 @@
+{%- comment -%}
+  Minimal, single-column version of the CV: plain text, dates on the left, no JavaScript.
+  Uses the same data files as the full version (_data/profile.yml, en.yml, es.yml).
+{%- endcomment -%}
+{%- include vars.html -%}
+{%- assign pdf = p.pdf_min[lang] -%}
+<!doctype html>
+<html lang="{{ lang }}" data-theme="{{ site.data.themes[0].id }}">
+<head>
+  {%- include head.html stylesheet='/assets/css/minimal.css' %}
+</head>
+<body>
+  <div class="m-page">
+    <nav class="m-top" aria-label="{{ t.nav_label }}">
+      <a href="{{ other_url | relative_url }}" hreflang="{{ t.other_lang }}" lang="{{ t.other_lang }}">{{ t.other_lang_label }}</a>
+      {%- if pdf and pdf != '' %}
+      <a href="{{ pdf | relative_url }}" download>PDF</a>
+      {%- endif %}
+      <a href="{{ home_url | relative_url }}">{{ t.full_label }}</a>
+    </nav>
+
+    <header class="m-header">
+      {%- if p.photo and p.photo != '' %}
+      <img class="m-photo" src="{{ p.photo | relative_url }}" alt="{{ t.photo_alt }}" width="112" height="112">
+      {%- endif %}
+      <div>
+        <h1 class="m-name">{{ p.name }}</h1>
+        <p class="m-role">{{ t.role }}</p>
+        <ul class="m-contact">
+          <li><a href="mailto:{{ p.email }}">{% include icon.html name="mail" %}{{ p.email }}</a></li>
+          <li>{% include icon.html name="pin" %}{{ t.location }}</li>
+          {%- for s in p.social %}
+          <li><a href="{{ s.url }}" rel="me noopener">{% include icon.html name=s.icon %}{{ s.name }}<span class="m-print-only"> · {{ s.url | remove_first: "https://" | remove_first: "www." }}</span></a></li>
+          {%- endfor %}
+        </ul>
+      </div>
+    </header>
+
+    <p class="m-tagline">{{ t.headline }}</p>
+
+    <main id="main">
+      {%- for s in t.sections %}
+      {%- if s.items.size > 0 %}
+      <section id="{{ s.id }}" class="m-section" aria-labelledby="{{ s.id }}-title">
+        <h2 id="{{ s.id }}-title">{{ s.title }}</h2>
+
+        {%- case s.layout %}
+        {%- when 'timeline' %}
+        {%- for item in s.items %}
+        <h3 class="m-org">
+          {%- if item.url %}<a href="{{ item.url }}" rel="noopener">{{ item.org }}</a>{% else %}{{ item.org }}{% endif -%}
+          {%- if item.projects and item.location %}<span class="m-muted m-org-location"> · {{ item.location }}</span>{% endif -%}
+        </h3>
+        {%- if item.projects %}
+        {%- for pr in item.projects %}
+        <div class="m-row">
+          <div class="m-when">{{ pr.dates }}</div>
+          <div class="m-what">
+            <p class="m-title">{{ pr.role }}</p>
+            <p class="m-meta">{{ pr.title }}{% if pr.client %} · {{ t.client_label }}: {{ pr.client }}{% endif %}</p>
+            {%- if pr.text %}<p>{{ pr.text }}</p>{% endif %}
+            {%- if pr.bullets %}
+            <ul>
+              {%- for b in pr.bullets %}<li>{{ b }}</li>{% endfor %}
+            </ul>
+            {%- endif %}
+          </div>
+        </div>
+        {%- endfor %}
+        {%- else %}
+        <div class="m-row">
+          <div class="m-when">{{ item.dates }}</div>
+          <div class="m-what">
+            <p class="m-title">{{ item.title }}</p>
+            {%- if item.location %}<p class="m-meta">{% include icon.html name="pin" %}{{ item.location }}</p>{% endif %}
+            {%- if item.text %}<p>{{ item.text }}</p>{% endif %}
+            {%- if item.bullets %}
+            <ul>
+              {%- for b in item.bullets %}<li>{{ b }}</li>{% endfor %}
+            </ul>
+            {%- endif %}
+          </div>
+        </div>
+        {%- endif %}
+        {%- endfor %}
+
+        {%- when 'skills', 'pairs' %}
+        {%- for item in s.items %}
+        <div class="m-row m-row-tight">
+          <div class="m-when">{{ item.label }}</div>
+          <div class="m-what">{% if item.tags %}{{ item.tags | join: ", " }}{% else %}{{ item.text }}{% endif %}</div>
+        </div>
+        {%- endfor %}
+
+        {%- else %}
+        {%- for item in s.items %}
+        <div class="m-row m-row-tight">
+          <div class="m-when">{{ item.dates }}</div>
+          <div class="m-what">
+            <p>
+              {%- if item.org %}{{ item.title }}, {% if item.url %}<a href="{{ item.url }}" rel="noopener">{{ item.org }}</a>{% else %}{{ item.org }}{% endif %}
+              {%- elsif item.url %}<a href="{{ item.url }}" rel="noopener">{{ item.title }}</a>
+              {%- else %}{{ item.title }}{% endif %}
+              {%- if item.location %}<span class="m-muted"> · {{ item.location }}</span>{% endif %}
+            </p>
+            {%- if item.text %}<p class="m-muted">{{ item.text }}</p>{% endif %}
+            {%- if item.repo or item.demo or item.verify_url %}
+            <p class="m-links">
+              {%- if item.repo %}<a href="{{ item.repo }}" rel="noopener">{{ t.repo_label }}</a>{% endif %}
+              {%- if item.demo %}<a href="{{ item.demo }}" rel="noopener">{{ t.demo_label }}</a>{% endif %}
+              {%- if item.verify_url %}<a href="{{ item.verify_url }}" rel="noopener">{{ t.verify_label }}</a>{% endif -%}
+            </p>
+            {%- endif %}
+          </div>
+        </div>
+        {%- endfor %}
+        {%- endcase %}
+      </section>
+      {%- endif %}
+      {%- endfor %}
+    </main>
+
+    <footer class="m-footer">
+      © {{ site.time | date: '%Y' }} {{ p.name }}. {{ t.rights }}<span class="m-footer-alt"> · <a href="{{ home_url | relative_url }}">{{ t.full_label }}</a></span>
+    </footer>
+  </div>
+</body>
+</html>

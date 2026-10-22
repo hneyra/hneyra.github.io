@@ -62,6 +62,14 @@ JEKYLL_ENV=production bundle exec jekyll build --baseurl /repositorio
 | `Address already in use - bind(2) for 127.0.0.1:4000` | Ya hay otro servidor: ciérralo o usa `--port 4001`. |
 | No se ven los cambios | Borra la caché: `bundle exec jekyll clean` y vuelve a arrancar. |
 
+## Versión minimalista
+
+Además del CV completo hay una versión minimalista (solo texto, una columna, sin JavaScript) en `/min/` y `/es/min/`. Usa **los mismos datos** de `_data/`, así que no hay que mantener nada por separado. Se enlazan entre sí (pie de página del CV completo y enlaces superiores de la minimalista).
+
+- Plantilla: `_layouts/minimal.html`; estilos: `assets/css/minimal.scss`.
+- Sus páginas indican como `canonical` la versión completa, para que los buscadores no las traten como contenido duplicado.
+- Para que la minimalista sea la página principal, cambia el `layout` de `index.md` y `es/index.md` a `minimal` (y quita `canonical` de `min/index.md` y `es/min/index.md`, o borra esas dos páginas).
+
 ## Editar el contenido
 
 | Qué | Dónde |
@@ -159,12 +167,29 @@ Copia la imagen en `assets/img/` (cuadrada, unos 640×640 px, JPEG) y cambia `ph
 
 ### CV en PDF
 
-Los PDF están en `assets/pdf/` y se enlazan desde `pdf.en` / `pdf.es` en `_data/profile.yml`; si se dejan vacíos, el botón «Descargar CV» desaparece. Se generan a partir de la hoja de estilos de impresión de la propia web, así que **después de cambiar el contenido hay que regenerarlos**:
+Los PDF se generan automáticamente a partir de la hoja de estilos de impresión de la propia web, así que **siempre coinciden con el contenido publicado**:
 
-1. Arranca el sitio en local y abre <http://localhost:4000/> en Chrome.
-2. Imprimir (Cmd+P) → Destino: «Guardar como PDF» → Papel: A4 → Márgenes: predeterminados → activa «Gráficos de fondo».
-3. Guarda el archivo como `assets/pdf/cv-jorge-neyra-araoz-en.pdf`.
-4. Repite con <http://localhost:4000/es/> → `cv-jorge-neyra-araoz-es.pdf`.
+Hay cuatro PDF, uno por versión e idioma, cada uno impreso con el diseño de su página:
+
+| Página | PDF | Configuración en `_data/profile.yml` |
+| --- | --- | --- |
+| `/` y `/es/` (completa) | `cv-jorge-neyra-araoz-en.pdf`, `-es.pdf` | `pdf.en`, `pdf.es` |
+| `/min/` y `/es/min/` (minimalista) | `cv-jorge-neyra-araoz-min-en.pdf`, `-min-es.pdf` | `pdf_min.en`, `pdf_min.es` |
+
+- **En GitHub Actions** (en cada despliegue): tras compilar el sitio, `scripts/build-pdf.mjs` abre cada página en Chromium y la imprime en la ruta a la que apunta su enlace de descarga. Después, `scripts/check-links.py` revisa todos los enlaces internos; si falta un PDF, una imagen o una página, **el despliegue falla** en lugar de publicar un enlace roto.
+- **En local** (opcional, para actualizar las copias de `assets/pdf/` que usa `jekyll serve`). Requiere Node.js 24 o superior:
+
+  ```sh
+  npm ci                                   # una sola vez
+  npx playwright install chromium          # una sola vez
+  JEKYLL_ENV=production bundle exec jekyll build
+  npm run pdf                              # genera los PDF en _site/ y actualiza assets/pdf/
+  npm run check-links                      # comprueba que no haya enlaces rotos
+  ```
+
+  Detén antes `jekyll serve`: escribe en la misma carpeta `_site/` y, al detectar los PDF nuevos, la regenera mientras se comprueban los enlaces.
+
+Si dejas vacía una de esas rutas, el enlace de descarga de esa página desaparece y no se genera su PDF.
 
 ### Imagen para redes sociales y favicon
 
@@ -173,7 +198,14 @@ Los PDF están en `assets/pdf/` y se enlazan desde `pdf.en` / `pdf.es` en `_data
 
 ## Publicar en GitHub Pages
 
-El despliegue lo hace el workflow `.github/workflows/pages.yml`: en cada `push` a `main` compila el sitio con Jekyll y lo publica. No uses a la vez el modo «Deploy from a branch».
+El despliegue lo hace el workflow `.github/workflows/pages.yml`. En cada `push` a `main`:
+
+1. compila el sitio con Jekyll,
+2. genera los PDF del CV con Chromium (`scripts/build-pdf.mjs`),
+3. comprueba que no haya enlaces internos rotos (`scripts/check-links.py`); si los hay, se detiene sin publicar,
+4. publica el resultado en GitHub Pages.
+
+En los pull requests ejecuta los pasos 1–3 como comprobación, sin publicar. No uses a la vez el modo «Deploy from a branch».
 
 1. Crea el repositorio en GitHub. Para que la web quede en `https://hneyra.github.io/`, el repositorio debe llamarse exactamente **`hneyra.github.io`** y pertenecer a la cuenta `hneyra`.
 2. Sube el código:
@@ -215,6 +247,10 @@ assets/css/main.scss     Estilos, temas claro/oscuro e impresión
 assets/js/main.js        Selector de tema, modo oscuro y menú móvil (mejora progresiva)
 assets/img/, assets/pdf/ Foto, iconos, imagen social y PDF del CV
 index.md, es/index.md    Páginas en inglés y español
+min/, es/min/            Versión minimalista
 404.html                 Página de error
-.github/workflows/       Despliegue en GitHub Pages
+scripts/build-pdf.mjs    Genera los PDF del CV desde el sitio compilado (Playwright + Chromium)
+scripts/check-links.py   Comprueba enlaces internos, imágenes, PDF y anclas
+package.json             Dependencia de Playwright para generar los PDF
+.github/workflows/       Compilación, PDF, comprobación de enlaces y despliegue en GitHub Pages
 ```

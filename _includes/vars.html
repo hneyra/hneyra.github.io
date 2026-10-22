@@ -3,4 +3,9 @@
 {%- assign t = site.data[lang] -%}
 {%- assign p = site.data.profile -%}
 {%- if lang == 'es' -%}{%- assign home_url = '/es/' -%}{%- else -%}{%- assign home_url = '/' -%}{%- endif -%}
-{%- if t.other_lang == 'es' -%}{%- assign other_url = '/es/' -%}{%- else -%}{%- assign other_url = '/' -%}{%- endif -%}
+{%- comment -%} page_base: the page's path in English ('/' for the CV, '/min/' for the minimal version); Spanish lives under /es {%- endcomment -%}
+{%- assign page_base = page.alt_base | default: '/' -%}
+{%- assign en_url = page_base -%}
+{%- assign es_url = '/es' | append: page_base -%}
+{%- if t.other_lang == 'es' -%}{%- assign other_url = es_url -%}{%- else -%}{%- assign other_url = en_url -%}{%- endif -%}
+{%- assign minimal_url = home_url | append: 'min/' -%}

@@ -1046,7 +1046,8 @@ main:focus { outline: none; }
   .facts,
   .timeline .tags,
   .section-contact,
-  .footer-links { display: none !important; }
+  .footer-links,
+  .footer-alt { display: none !important; }
 
   .hero-text > * { animation: none !important; }
   .container { max-width: none; padding: 0; }

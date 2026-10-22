@@ -1,0 +1,229 @@
+---
+---
+// Minimal version of the CV (_layouts/minimal.html): plain text, one column, no JavaScript.
+
+:root {
+  --bg: #ffffff;
+  --fg: #353c47;
+  --muted: #5f6773;
+  --heading: #0b2545;
+  --accent: #0b6f7c;
+  --rule: #cfd5dd;
+  // Same system font stack LinkedIn uses: San Francisco (Apple), Segoe UI (Windows), Roboto (Android)…
+  --sans: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+@mixin dark {
+  --bg: #0d1117;
+  --fg: #c9d1d9;
+  --muted: #9aa4b0;
+  --heading: #f0f6fc;
+  --accent: #3dd6c4;
+  --rule: #30363d;
+  color-scheme: dark;
+}
+
+// Follows the system, or the choice made on the full version
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]) { @include dark; }
+}
+
+:root[data-mode="dark"] { @include dark; }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 1rem/1.55 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--rule);
+}
+
+a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.icon {
+  width: 0.95em;
+  height: 0.95em;
+  margin-right: 5px;
+  vertical-align: -0.12em;
+}
+
+.m-page {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.m-top {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  font: 0.875rem var(--sans);
+}
+
+.m-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.m-photo {
+  flex: none;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.m-name {
+  margin: 0;
+  color: var(--heading);
+  font-size: clamp(1.6rem, 5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.m-role {
+  margin: 4px 0 10px;
+  color: var(--accent);
+  font: 600 1rem var(--sans);
+}
+
+.m-contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9375rem;
+}
+
+.m-tagline {
+  margin: 28px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+  color: var(--muted);
+  font-style: italic;
+}
+
+.m-section { margin-top: 40px; }
+
+.m-section h2 {
+  margin: 0 0 14px;
+  color: var(--accent);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.m-org {
+  margin: 18px 0 6px;
+  color: var(--heading);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+// Dates (or labels) on the left, content on the right of a thin rule
+.m-row {
+  display: grid;
+  grid-template-columns: 10.5rem 1fr;
+}
+
+.m-when {
+  padding-right: 16px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  text-align: right;
+}
+
+.m-what {
+  min-width: 0;
+  padding: 0 0 14px 16px;
+  border-left: 1px solid var(--rule);
+}
+
+.m-row-tight .m-what { padding-bottom: 6px; }
+
+.m-what p { margin: 0; }
+.m-what p + p { margin-top: 4px; }
+
+.m-title {
+  color: var(--heading);
+  font-weight: 600;
+}
+
+.m-meta,
+.m-muted { color: var(--muted); }
+
+.m-meta { font-size: 0.9375rem; }
+.m-org-location { font-size: 0.9375rem; font-weight: 400; }
+
+.m-what ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.m-what li { margin: 2px 0; }
+
+.m-links {
+  display: flex;
+  gap: 14px;
+  font-size: 0.9375rem;
+}
+
+.m-print-only { display: none; }
+
+.m-footer {
+  margin-top: 48px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.8125rem;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .m-header { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .m-photo { width: 88px; height: 88px; }
+  // Phones: dates above the content, still on the left rule
+  .m-row { display: block; padding-left: 12px; border-left: 1px solid var(--rule); }
+  .m-when { padding: 0; font-size: 0.8125rem; text-align: left; }
+  .m-what { padding-left: 0; border-left: 0; }
+  .m-row-tight .m-when { padding-top: 4px; }
+}
+
+@media print {
+  :root { --bg: #fff; --fg: #111; --muted: #444; --heading: #000; --accent: #0b2545; --rule: #ccc; color-scheme: light; }
+  @page { size: A4; margin: 13mm 15mm; }
+  html { font-size: 11.5px; }
+  .m-top, .m-footer-alt { display: none; }
+  .m-print-only { display: inline; color: var(--muted); }
+  .m-header { margin-top: 0; }
+  .m-tagline { margin-top: 14pt; }
+  .m-section { margin-top: 18pt; }
+  .m-footer { margin-top: 18pt; }
+  .m-page { max-width: none; padding: 0; }
+  a { border: 0; }
+  .m-row { grid-template-columns: 12.5rem 1fr; break-inside: avoid; }
+  .m-when { white-space: nowrap; }
+  .m-section h2, .m-org { break-after: avoid; }
+}

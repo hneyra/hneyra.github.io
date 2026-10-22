@@ -1,0 +1,13 @@
+{
+  "name": "hneyra-cv",
+  "private": true,
+  "description": "Tooling for the CV site: PDF generation and link checks (the site itself is built with Jekyll).",
+  "type": "module",
+  "scripts": {
+    "pdf": "node scripts/build-pdf.mjs --copy-to-source",
+    "check-links": "python3 scripts/check-links.py _site ''"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  }
+}
