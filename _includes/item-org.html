@@ -1,0 +1,9 @@
+{%- assign item = include.item -%}
+{%- if item.org or item.location %}
+<p class="item-org">
+  {%- if item.org %}
+  {%- if item.url %}<a href="{{ item.url }}" rel="noopener">{{ item.org }}</a>{% else %}<span>{{ item.org }}</span>{% endif %}
+  {%- endif %}
+  {%- if item.location %}<span class="item-location">{% include icon.html name="pin" %}{{ item.location }}</span>{% endif -%}
+</p>
+{%- endif -%}

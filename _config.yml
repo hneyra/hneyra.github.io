@@ -1,0 +1,22 @@
+title: Jorge H. Neyra-Araoz
+description: Software engineer and integration architect in Berlin.
+author: Jorge H. Neyra-Araoz
+lang: en
+
+# Production address. For a project site (usuario.github.io/repositorio/) the
+# GitHub Actions workflow passes the right --baseurl automatically.
+url: "https://hneyra.github.io"
+baseurl: ""
+
+markdown: kramdown
+sass:
+  style: compressed
+  sourcemap: never
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - .ruby-version
+  - .idea
+  - vendor

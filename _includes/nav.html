@@ -1,0 +1,39 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="{{ home_url | relative_url }}">
+      <span class="brand-mark" aria-hidden="true">{{ p.initials }}</span>
+      <span class="brand-name">{{ p.name }}</span>
+    </a>
+
+    <button type="button" class="icon-button menu-toggle" aria-expanded="false" aria-controls="site-nav" data-menu-toggle hidden>
+      {%- include icon.html name="menu" -%}
+      <span class="sr-only">{{ t.menu_label }}</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label="{{ t.nav_label }}">
+      <ul class="nav-links">
+        <li><a href="{{ home_url | relative_url }}#{{ t.about.id }}">{{ t.about.nav }}</a></li>
+        {%- for s in t.sections %}
+        {%- if s.nav and s.items.size > 0 %}
+        <li><a href="{{ home_url | relative_url }}#{{ s.id }}">{{ s.nav }}</a></li>
+        {%- endif %}
+        {%- endfor %}
+        <li><a href="{{ home_url | relative_url }}#{{ t.contact.id }}">{{ t.contact.nav }}</a></li>
+      </ul>
+
+      <div class="nav-tools">
+        <a class="lang-switch" href="{{ other_url | relative_url }}" hreflang="{{ t.other_lang }}" lang="{{ t.other_lang }}" title="{{ t.other_lang_name }}">{{ t.other_lang_label }}</a>
+        <div class="themes" role="group" aria-label="{{ t.theme_label }}" data-js-only hidden>
+          {%- for th in site.data.themes %}
+          <button type="button" class="swatch" data-theme-id="{{ th.id }}" style="--swatch: {{ th.swatch }}" title="{{ t.theme_names[th.id] }}" aria-label="{{ t.theme_label }}: {{ t.theme_names[th.id] }}" aria-pressed="false"></button>
+          {%- endfor %}
+        </div>
+        <button type="button" class="icon-button mode-toggle" aria-pressed="false" title="{{ t.mode_label }}" data-mode-toggle data-js-only hidden>
+          {%- include icon.html name="moon" -%}
+          {%- include icon.html name="sun" -%}
+          <span class="sr-only">{{ t.mode_label }}</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>

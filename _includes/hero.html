@@ -1,0 +1,41 @@
+{%- assign pdf = p.pdf[lang] -%}
+<section class="hero" aria-labelledby="hero-name">
+  <div class="container hero-inner">
+    {%- if p.photo and p.photo != '' %}
+    <div class="hero-photo">
+      <img src="{{ p.photo | relative_url }}" alt="{{ t.photo_alt }}" width="320" height="320">
+    </div>
+    {%- endif %}
+
+    <div class="hero-text">
+      <p class="eyebrow">{{ t.role }}</p>
+      <h1 id="hero-name" class="hero-name">{{ p.name }}</h1>
+      <p class="hero-headline">{{ t.headline }}</p>
+      <p class="hero-intro">{{ t.intro }}</p>
+
+      <ul class="actions">
+        <li>
+          <a class="btn btn-primary" href="mailto:{{ p.email }}">
+            {%- include icon.html name="mail" -%}<span>{{ t.contact_label }}</span>
+          </a>
+        </li>
+        {%- if pdf and pdf != '' %}
+        <li>
+          <a class="btn btn-secondary" href="{{ pdf | relative_url }}" download>
+            {%- include icon.html name="download" -%}<span>{{ t.pdf_label }}</span>
+          </a>
+        </li>
+        {%- endif %}
+      </ul>
+
+      <ul class="hero-meta">
+        <li>{% include icon.html name="pin" %}<span>{{ t.location }}</span></li>
+        <li><a href="mailto:{{ p.email }}">{% include icon.html name="mail" %}<span>{{ p.email }}</span></a></li>
+        {%- for s in p.social %}
+        <li><a href="{{ s.url }}" rel="me noopener">{% include icon.html name=s.icon %}<span>{{ s.name }}<span class="print-only"> · {{ s.url | remove_first: "https://" | remove_first: "www." }}</span></span></a></li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+  </div>
+</section>

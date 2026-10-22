@@ -1,0 +1,283 @@
+# UI strings
+locale: en_US
+other_lang: es
+other_lang_label: Español
+other_lang_name: Ver en español
+skip_label: Skip to content
+nav_label: Sections
+menu_label: Menu
+theme_label: Color theme
+mode_label: Dark mode
+location: Berlin, Germany
+contact_label: Get in touch
+pdf_label: Download CV (PDF)
+photo_alt: Portrait of Jorge H. Neyra-Araoz
+rights: All rights reserved.
+back_home: Back to the CV
+tags_label: Technologies
+repo_label: Source code
+demo_label: Live demo
+link_label: Website
+verify_label: Verify credential
+client_label: Client
+theme_names:
+  navy: Navy
+  terracotta: Terracotta
+  graphite: Graphite
+
+# Hero: who you are, what you do, what you bring
+role: Software Engineer
+headline: I build Java and Spring Boot microservices and integrations on AWS — from concept to release.
+intro: >-
+  Software engineer at idealo in Berlin, building Java and Spring Boot microservices on AWS (EKS)
+  with Kafka, Docker and infrastructure as code (Terraform, Pulumi). Since 2006 I have built and architected Java/Spring platforms, cloud
+  integrations and connectors across Peru, Brazil, Chile, the USA and Germany.
+# Used for the meta description and social previews
+description: Software engineer in Berlin. Java and Spring Boot microservices on AWS (EKS, Kafka, Terraform, Pulumi) and integrations, from concept to release.
+
+# Profile section (paragraphs + key facts)
+about:
+  id: profile
+  title: Profile
+  nav: Profile
+  paragraphs:
+    - >-
+      I work across the whole software development process — design, architecture, testing and
+      maintenance — through to the final release, with an emphasis on code quality: clean code,
+      SOLID principles and design patterns.
+    - >-
+      At idealo I build Java and Spring Boot microservices running on AWS EKS, with Kafka, Docker,
+      infrastructure as code (Terraform, Pulumi), Grafana and React. I have also worked on the AWS
+      migration of the B2B sales applications and on integration and workflow solutions around
+      Salesforce for the commerce division. Before that I
+      designed the architecture of cloud platforms built on Spring, RabbitMQ and the Microsoft Graph
+      APIs, and a bi-directional Salesforce–JIRA connector.
+  facts:
+    - value: "2006"
+      label: building software professionally since
+    - value: Java · Spring Boot · AWS
+      label: microservices at idealo
+    - value: "2nd in Peru"
+      label: ACM-ICPC programming contest, 2004
+
+# Contact section at the end of the page
+contact:
+  id: contact
+  title: Contact
+  nav: Contact
+  text: Open to conversations about software architecture, integrations and engineering roles. Email is the quickest way to reach me.
+
+# Sections render in this order. A section with no items is not rendered.
+#   nav: label for the top navigation (omit to keep it out of the menu)
+#   layout: timeline | skills | cards | list | compact | pairs
+# Item fields (all optional): title, org, url, location, dates, text, bullets (list), tags (list)
+#   timeline items can group projects (title, role, client, dates, text, bullets, tags)
+#   cards also take: repo, demo, verify_url, image, image_alt
+#   skills / pairs use: label + text (one line each)
+sections:
+  - id: experience
+    title: Work experience
+    nav: Experience
+    layout: timeline
+    items:
+      - title: Software Engineer
+        org: idealo internet GmbH
+        url: https://www.idealo.de
+        location: Berlin, Germany
+        dates: Jan 2020 – present
+        text: Microservices in Java and Spring Boot on AWS (EKS), with Kafka, Docker and infrastructure as code (Terraform, Pulumi).
+        bullets:
+          - Development of Spring Boot microservices running on AWS EKS, with Kafka messaging, Grafana monitoring and JUnit tests; front-end work in React.
+          - "AWS migration of applications for idealo's B2B sales: planning, strategy and implementation."
+          - Architecture and development of integration and workflow management solutions for a variety of applications in idealo's commerce division.
+          - Salesforce developer and admin for idealo's B2B business processes.
+        tags: [Java, Spring Boot, Microservices, AWS EKS, Kafka, Docker, Terraform, Pulumi, Grafana, JUnit, React, Salesforce]
+      - title: Senior Java Developer
+        org: RetailCompass
+        location: Santiago, Chile
+        dates: 2017 – 2019
+        text: "Data team: Java development on AWS (Amazon RDS, among others), from data extraction to the APIs other teams consume."
+        bullets:
+          - Data extraction with web crawlers.
+          - Ingestion of the extracted data into the database.
+          - REST endpoints in Spring Boot so other teams could use the data.
+        tags: [Java, Spring Boot, Web crawling, REST APIs, AWS, Amazon RDS]
+      - title: Senior Software Architect · Software Development Consultant
+        org: zAgile, Inc.
+        location: California, USA
+        dates: Apr 2008 – Dec 2019
+        projects:
+          - title: Nuvolex Cloud Platform
+            role: Senior Software Architect
+            dates: Sep 2015 – Dec 2019
+            text: Software architecture of a platform that processes data through PowerShell cmdlets for Exchange, Azure AD Graph and Microsoft Graph, for Exchange Online, Office 365, Microsoft Teams and Intune.
+            bullets:
+              - Spring Cloud, RabbitMQ cluster, Java web application (Spring, JPA, RESTful).
+              - C# application with PowerShell, Office 365 and Azure Graph API.
+            tags: [Spring Cloud, RabbitMQ, Java, C#, PowerShell, Microsoft Graph]
+          - title: zAgileConnect for JIRA
+            role: Senior Software Development Consultant
+            dates: Jan 2014 – Sep 2015
+            text: Defined and built the initial architecture of a bi-directional Salesforce–JIRA connector, using JIRA plugin development (Java, REST API) and Salesforce technologies (Apex, SOQL, Visualforce, JavaScript) on Heroku.
+            tags: [Java, Salesforce, Apex, JIRA, Heroku]
+          - title: Nuvolex Platform
+            role: Senior Software Development Consultant
+            client: Nuvolex, Inc.
+            dates: Dec 2011 – Dec 2013
+            text: Designed the initial architecture of a platform integrating cloud services (Office 365, Amazon EC2, etc.) with Spring Boot, Spring MVC, REST, JPA, MongoDB, a MySQL cluster, Hogan.js and Mustache.js.
+            tags: [Spring Boot, REST, MongoDB, MySQL]
+          - title: JasperReports NoSQL Connectors
+            role: Software Development Consultant
+            client: JasperSoft
+            dates: Apr 2011 – Oct 2011
+            text: Research and proofs of concept integrating JasperReports with big data technologies such as MongoDB, CouchDB, Neo4j and Riak.
+            tags: [JasperReports, MongoDB, CouchDB, Neo4j]
+          - title: Wikidsmart
+            role: Software Development Consultant
+            dates: Apr 2008 – 2011
+            text: Connectors between zCALMServer (an ontology engine) and wikis (Confluence), issue tracking (JIRA), CRM (Salesforce), version control (Fisheye/Crucible, SVN) and portals (JBoss Portlets).
+            tags: [Java, Confluence, JIRA, Salesforce]
+      - title: Researcher and Software Developer — Chinchilla HR system
+        org: Assembleia Legislativa de São Paulo (ALESP)
+        location: São Paulo, Brazil
+        dates: Apr 2007 – Jan 2008
+        text: Research, maintenance and development of the Chinchilla web system with agile methodologies and Java (JSP, Struts, Servlets, Tomcat), through Fundação de Apoio à Universidade de São Paulo.
+        tags: [Java, Struts, Agile]
+      - title: Java Developer — Cyberdoc workflow system
+        org: Handel-Soft S.A.C.
+        location: Arequipa, Peru
+        dates: Jan 2006 – Jan 2007
+        text: Workflow system for document management in public institutions in Arequipa.
+        tags: [Java]
+      - title: Developer — Web registration and notification system
+        org: Peruvian Computer Society
+        location: Arequipa, Peru
+        dates: Sep 2006 – Dec 2006
+        text: Registration and notification system for the Jornadas Peruanas de Computación, built with PostgreSQL, Perl, HTML and JavaScript (AJAX).
+        tags: [PostgreSQL, Perl, JavaScript]
+
+  - id: skills
+    title: Technical skills
+    nav: Skills
+    layout: skills
+    items:
+      - label: programming
+        text: Java, TypeScript / JavaScript, Python, Bash, C#, C/C++…
+      - label: frameworks
+        text: Spring Boot, Spring Cloud, Spring WebFlux, JPA / Hibernate, React, Angular…
+      - label: cloud & data
+        text: AWS (EKS, SQS, RDS), Docker, Terraform, Pulumi, Kafka, PostgreSQL, MongoDB…
+      - label: others
+        text: Salesforce (Apex, SOQL), Grafana, JUnit, Mockito, Git, Maven, Gradle, Linux…
+
+  # Add your projects here; the section (and its menu entry) appears once it has items.
+  # Example:
+  #   - title: Project name
+  #     text: What it does and the problem it solves.
+  #     tags: [Java, Spring Boot, AWS]
+  #     repo: https://github.com/hneyra/your-repo
+  #     demo: https://example.com
+  #     image: /assets/img/projects/your-project.png
+  #     image_alt: Screenshot of the dashboard
+  - id: projects
+    title: Featured projects
+    nav: Projects
+    layout: cards
+    items: []
+
+  - id: education
+    title: Education
+    nav: Education
+    layout: list
+    items:
+      - title: Graduate studies in Computer Science
+        org: Universidade de São Paulo
+        url: https://www.ime.usp.br
+        location: São Paulo, Brazil
+        dates: 2007 – 2009
+      - title: Bachelor in Systems Engineering (Computer Science)
+        org: Universidad Nacional de San Agustín
+        url: https://www.unsa.edu.pe
+        location: Arequipa, Peru
+        dates: 2001 – 2005
+
+  # Add certifications here; the section appears once it has items.
+  # Example:
+  #   - title: AWS Certified Solutions Architect – Associate
+  #     org: Amazon Web Services
+  #     dates: Mar 2026
+  #     verify_url: https://www.credly.com/badges/...
+  - id: certifications
+    title: Certifications
+    layout: cards
+    items: []
+
+  - id: achievements
+    title: Recognitions and awards
+    layout: compact
+    items:
+      - title: Third place of my graduating class
+        dates: Jun 2006
+      - title: Second place in Peru, ACM-ICPC 2004
+        dates: Nov 2004
+      - title: Recognition for contributing to the development, image and strengthening of the Production and Services Engineering School on its 20th anniversary
+        location: Arequipa, Peru
+        dates: Dec 2003
+
+  - id: contests
+    title: Programming contests
+    layout: compact
+    items:
+      - title: Coach, ACM-ICPC 2010
+        location: Lima, Peru
+        dates: Nov 2010
+      - title: Contestant, Maratona de Programação da USP 2007
+        location: São Paulo, Brazil
+        dates: Jun 2007
+      - title: Contestant, ACM-ICPC 2005
+        location: Lima, Peru
+        dates: Nov 2005
+      - title: Contestant, Google Code Jam 2005
+        dates: Sep 2005
+      - title: Contestant, ACM-ICPC 2004
+        location: Arica, Chile
+        dates: Nov 2004
+      - title: Contestant, ACM-ICPC 2003
+        location: Chillán, Chile
+        dates: Nov 2003
+
+  - id: teaching
+    title: Teaching
+    layout: list
+    items:
+      - title: Laboratory instructor (part-time), Software Engineering
+        org: Universidad Católica San Pablo
+        url: https://ucsp.edu.pe
+        location: Arequipa, Peru
+        dates: 2012 – 2017
+      - title: Teacher, "Seminario Taller LP-Java" workshop
+        org: Universidad Néstor Cáceres Velásquez
+        location: Juliaca, Peru
+        dates: Jun 2006
+
+  - id: languages
+    title: Languages
+    layout: pairs
+    items:
+      - label: Spanish
+        text: Native
+      - label: English
+        text: Advanced
+      - label: Portuguese
+        text: Fluent
+      - label: German
+        text: Intermediate
+
+  - id: interests
+    title: Interests
+    layout: pairs
+    items:
+      - label: Research
+        text: Cloud computing and big data; web mining, crawling and scraping; agile development and best practices; software architecture and object-oriented programming
+      - label: Hobbies
+        text: Playing guitar, football, and reading about the latest in cloud computing and data science

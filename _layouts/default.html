@@ -1,0 +1,16 @@
+{%- include vars.html -%}
+<!doctype html>
+<html lang="{{ lang }}" data-theme="{{ site.data.themes[0].id }}">
+<head>
+  {%- include head.html %}
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ t.skip_label }}</a>
+  {% include nav.html %}
+  <main id="main" tabindex="-1">
+    {{ content }}
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/main.js' | relative_url }}" defer></script>
+</body>
+</html>

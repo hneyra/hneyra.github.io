@@ -1,0 +1,139 @@
+{%- assign s = include.section -%}
+{%- if s.items.size > 0 -%}
+{%- assign layout = s.layout | default: 'list' -%}
+<section id="{{ s.id }}" class="section section-{{ layout }}" aria-labelledby="{{ s.id }}-title">
+  <div class="container">
+    <h2 id="{{ s.id }}-title" class="section-title">{{ s.title }}</h2>
+
+    {%- case layout %}
+    {%- when 'timeline' %}
+    <ol class="timeline">
+      {%- for item in s.items %}
+      <li class="timeline-item">
+        {%- if item.dates %}<p class="dates">{{ item.dates }}</p>{% endif %}
+        <div class="timeline-body">
+          <h3 class="item-title">{{ item.title }}</h3>
+          {%- include item-org.html item=item %}
+          {%- if item.text %}<p>{{ item.text }}</p>{% endif %}
+          {%- if item.bullets %}
+          <ul class="bullets">
+            {%- for b in item.bullets %}
+            <li>{{ b }}</li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+          {%- include tags.html tags=item.tags %}
+          {%- if item.projects %}
+          <ul class="subprojects">
+            {%- for pr in item.projects %}
+            <li class="subproject">
+              <div class="entry-head">
+                <h4 class="subproject-title">{{ pr.title }}</h4>
+                {%- if pr.dates %}<span class="dates">{{ pr.dates }}</span>{% endif %}
+              </div>
+              {%- if pr.role or pr.client %}
+              <p class="subproject-meta">
+                {%- if pr.role %}<span>{{ pr.role }}</span>{% endif %}
+                {%- if pr.client %}<span>{{ t.client_label }}: {{ pr.client }}</span>{% endif -%}
+              </p>
+              {%- endif %}
+              {%- if pr.text %}<p>{{ pr.text }}</p>{% endif %}
+              {%- if pr.bullets %}
+              <ul class="bullets">
+                {%- for b in pr.bullets %}
+                <li>{{ b }}</li>
+                {%- endfor %}
+              </ul>
+              {%- endif %}
+              {%- include tags.html tags=pr.tags %}
+            </li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </div>
+      </li>
+      {%- endfor %}
+    </ol>
+
+    {%- when 'skills' %}
+    <dl class="skill-list">
+      {%- for item in s.items %}
+      <div class="skill-row">
+        <dt>{{ item.label }}</dt>
+        <dd>{% if item.tags %}{{ item.tags | join: ", " }}{% else %}{{ item.text }}{% endif %}</dd>
+      </div>
+      {%- endfor %}
+    </dl>
+
+    {%- when 'cards' %}
+    <ul class="cards">
+      {%- for item in s.items %}
+      <li class="card">
+        {%- if item.image %}
+        <img class="card-image" src="{{ item.image | relative_url }}" alt="{{ item.image_alt | default: '' }}" loading="lazy">
+        {%- endif %}
+        <h3 class="item-title">{{ item.title }}</h3>
+        {%- if item.org or item.dates %}
+        <p class="item-org">
+          {%- if item.org %}<span>{{ item.org }}</span>{% endif %}
+          {%- if item.dates %}<span class="dates">{{ item.dates }}</span>{% endif -%}
+        </p>
+        {%- endif %}
+        {%- if item.text %}<p>{{ item.text }}</p>{% endif %}
+        {%- include tags.html tags=item.tags %}
+        {%- if item.repo or item.demo or item.verify_url or item.url %}
+        <p class="card-links">
+          {%- if item.repo %}<a href="{{ item.repo }}" rel="noopener">{% include icon.html name="github" %}<span>{{ t.repo_label }}<span class="sr-only">: {{ item.title }}</span></span></a>{% endif %}
+          {%- if item.demo %}<a href="{{ item.demo }}" rel="noopener">{% include icon.html name="external" %}<span>{{ t.demo_label }}<span class="sr-only">: {{ item.title }}</span></span></a>{% endif %}
+          {%- if item.url %}<a href="{{ item.url }}" rel="noopener">{% include icon.html name="external" %}<span>{{ t.link_label }}<span class="sr-only">: {{ item.title }}</span></span></a>{% endif %}
+          {%- if item.verify_url %}<a href="{{ item.verify_url }}" rel="noopener">{% include icon.html name="check" %}<span>{{ t.verify_label }}<span class="sr-only">: {{ item.title }}</span></span></a>{% endif -%}
+        </p>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+
+    {%- when 'compact' %}
+    <ul class="compact">
+      {%- for item in s.items %}
+      <li>
+        {%- if item.dates %}<span class="dates">{{ item.dates }}</span>{% endif %}
+        <span class="compact-text">{{ item.title }}{% if item.location %}<span class="compact-location">{{ item.location }}</span>{% endif %}</span>
+      </li>
+      {%- endfor %}
+    </ul>
+
+    {%- when 'pairs' %}
+    <dl class="pairs">
+      {%- for item in s.items %}
+      <div class="pair">
+        <dt>{{ item.label }}</dt>
+        <dd>{{ item.text }}</dd>
+      </div>
+      {%- endfor %}
+    </dl>
+
+    {%- else %}
+    <ul class="entries">
+      {%- for item in s.items %}
+      <li class="entry">
+        <div class="entry-head">
+          <h3 class="item-title">{{ item.title }}</h3>
+          {%- if item.dates %}<span class="dates">{{ item.dates }}</span>{% endif %}
+        </div>
+        {%- include item-org.html item=item %}
+        {%- if item.text %}<p>{{ item.text }}</p>{% endif %}
+        {%- if item.bullets %}
+        <ul class="bullets">
+          {%- for b in item.bullets %}
+          <li>{{ b }}</li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ul>
+    {%- endcase %}
+  </div>
+</section>
+{%- endif -%}

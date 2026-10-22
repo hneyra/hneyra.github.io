@@ -1,0 +1,57 @@
+---
+layout: default
+---
+{%- include vars.html -%}
+{% include hero.html %}
+
+{%- assign about = t.about %}
+<section id="{{ about.id }}" class="section section-profile" aria-labelledby="{{ about.id }}-title">
+  <div class="container">
+    <h2 id="{{ about.id }}-title" class="section-title">{{ about.title }}</h2>
+    <div class="profile">
+      <div class="profile-text">
+        {%- for paragraph in about.paragraphs %}
+        <p>{{ paragraph }}</p>
+        {%- endfor %}
+      </div>
+      {%- if about.facts.size > 0 %}
+      <ul class="facts">
+        {%- for fact in about.facts %}
+        <li class="fact">
+          <span class="fact-label">{{ fact.label }}</span>
+          <strong class="fact-value">{{ fact.value }}</strong>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+  </div>
+</section>
+
+{% for section in t.sections %}
+  {%- include section.html section=section -%}
+{% endfor %}
+
+{%- assign contact = t.contact %}
+<section id="{{ contact.id }}" class="section section-contact" aria-labelledby="{{ contact.id }}-title">
+  <div class="container">
+    <div class="contact-card">
+      <h2 id="{{ contact.id }}-title" class="section-title">{{ contact.title }}</h2>
+      <p class="contact-text">{{ contact.text }}</p>
+      <ul class="actions">
+        <li>
+          <a class="btn btn-primary" href="mailto:{{ p.email }}">
+            {%- include icon.html name="mail" -%}<span>{{ p.email }}</span>
+          </a>
+        </li>
+        {%- for s in p.social %}
+        <li>
+          <a class="btn btn-secondary" href="{{ s.url }}" rel="me noopener">
+            {%- include icon.html name=s.icon -%}<span>{{ s.name }}</span>
+          </a>
+        </li>
+        {%- endfor %}
+      </ul>
+    </div>
+  </div>
+</section>

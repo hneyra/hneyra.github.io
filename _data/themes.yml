@@ -1,0 +1,9 @@
+# Color themes offered in the header switcher; the first one is the default.
+# Swatch is the dot shown in the switcher. Names live in en.yml / es.yml.
+# The colors themselves (light and dark) are defined in assets/css/main.scss.
+- id: navy
+  swatch: "#0b2545"
+- id: terracotta
+  swatch: "#b4432c"
+- id: graphite
+  swatch: "#3a3a3a"

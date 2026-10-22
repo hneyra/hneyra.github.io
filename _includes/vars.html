@@ -1,0 +1,6 @@
+{%- comment -%} Shared variables; included by every layout because child layouts render before their parents. {%- endcomment -%}
+{%- assign lang = page.lang | default: site.lang -%}
+{%- assign t = site.data[lang] -%}
+{%- assign p = site.data.profile -%}
+{%- if lang == 'es' -%}{%- assign home_url = '/es/' -%}{%- else -%}{%- assign home_url = '/' -%}{%- endif -%}
+{%- if t.other_lang == 'es' -%}{%- assign other_url = '/es/' -%}{%- else -%}{%- assign other_url = '/' -%}{%- endif -%}

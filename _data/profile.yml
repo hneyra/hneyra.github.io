@@ -1,0 +1,19 @@
+# Shared by both languages. Texts that need translating live in en.yml / es.yml.
+name: Jorge H. Neyra-Araoz
+initials: JN
+email: jorge.neyra@gmail.com
+# Path to your photo (square, ideally 640×640). Leave empty to hide the photo.
+photo: /assets/img/jorge-neyra-araoz.jpg
+# CV as PDF, per language. Leave empty to hide the "Download CV" button.
+pdf:
+  en: /assets/pdf/cv-jorge-neyra-araoz-en.pdf
+  es: /assets/pdf/cv-jorge-neyra-araoz-es.pdf
+# Shown in the hero, the contact section and the footer, in this order.
+# icon: one of github, linkedin (see _includes/icon.html)
+social:
+  - name: LinkedIn
+    icon: linkedin
+    url: https://www.linkedin.com/in/jhneyra/
+  - name: GitHub
+    icon: github
+    url: https://github.com/hneyra

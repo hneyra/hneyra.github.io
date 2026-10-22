@@ -1,0 +1,11 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>© <span data-year>{{ site.time | date: '%Y' }}</span> {{ p.name }}. {{ t.rights }}</p>
+    <ul class="footer-links">
+      <li><a href="mailto:{{ p.email }}">{% include icon.html name="mail" %}<span class="sr-only">Email</span></a></li>
+      {%- for s in p.social %}
+      <li><a href="{{ s.url }}" rel="me noopener">{% include icon.html name=s.icon %}<span class="sr-only">{{ s.name }}</span></a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</footer>
