@@ -21,6 +21,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
 
@@ -42,21 +43,22 @@ jobs:
         env:
           JEKYLL_ENV: production
 
-      - name: Install Chromium for PDF generation
-        run: |
-          npm ci
-          npx playwright install --with-deps chromium
-          # Roboto is in the site's font stack; without it Linux falls back to DejaVu
-          sudo apt-get install -y --no-install-recommends fonts-roboto
+      # Only the Playwright library: the PDFs are printed with the Google Chrome that is
+      # preinstalled on the runner, so no browser download or apt packages are needed
+      - name: Install PDF tooling
+        run: npm ci
+        timeout-minutes: 3
 
-      # Prints each language version to the file its "Download CV" button links to,
-      # so the published PDFs always match the published page
+      # Prints each page to the file its download link points to,
+      # so the published PDFs always match the published pages
       - name: Generate CV PDFs
-        run: node scripts/build-pdf.mjs --site _site --baseurl "${{ steps.pages.outputs.base_path }}"
+        run: node scripts/build-pdf.mjs --site _site --baseurl "${{ steps.pages.outputs.base_path }}" --channel chrome
+        timeout-minutes: 5
 
       # Fails the deployment if any internal link, image or PDF is missing
       - name: Check links
         run: python3 scripts/check-links.py _site "${{ steps.pages.outputs.base_path }}"
+        timeout-minutes: 2
 
       - uses: actions/upload-pages-artifact@v5
         with:
@@ -67,6 +69,7 @@ jobs:
     if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
