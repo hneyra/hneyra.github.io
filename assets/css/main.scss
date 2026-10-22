@@ -652,7 +652,6 @@ main:focus { outline: none; }
 }
 
 .profile-text p {
-  max-width: 68ch;
   margin: 0 0 16px;
   font-size: 1.0625rem;
 }
@@ -689,7 +688,7 @@ main:focus { outline: none; }
 }
 
 @media (min-width: 900px) {
-  .profile { grid-template-columns: 1.6fr 1fr; gap: 56px; }
+  .profile.has-facts { grid-template-columns: 1.6fr 1fr; gap: 56px; }
 }
 
 // Experience timeline

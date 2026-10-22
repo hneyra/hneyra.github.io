@@ -37,7 +37,7 @@ intro: >-
 # Used for the meta description and social previews
 description: Software engineer in Berlin. Java and Spring Boot microservices on AWS (EKS, Kafka, Terraform, Pulumi) and integrations, from concept to release.
 
-# Profile section (paragraphs + key facts)
+# Profile section. Optional key-fact cards: facts: [{value, label}, …]
 about:
   id: profile
   title: Profile
@@ -53,13 +53,6 @@ about:
       well as integration, workflow and Salesforce solutions for the commerce division. Before that I
       designed the architecture of cloud platforms built on Spring, RabbitMQ and the Microsoft Graph
       APIs, and a bi-directional Salesforce–JIRA connector.
-  facts:
-    - value: "2006"
-      label: building software professionally since
-    - value: Java · Spring Boot · AWS
-      label: microservices at idealo
-    - value: "2nd in Peru"
-      label: ACM-ICPC Regional Contest, 2004
 
 # Contact section at the end of the page
 contact:

@@ -37,7 +37,7 @@ intro: >-
 # Se usa en la meta descripción y en las vistas previas de redes sociales
 description: Ingeniero de software en Berlín. Microservicios en Java y Spring Boot sobre AWS (EKS, Kafka, Terraform, Pulumi) e integraciones, del concepto a la entrega.
 
-# Sección de perfil (párrafos + datos clave)
+# Sección de perfil. Tarjetas de datos clave opcionales: facts: [{value, label}, …]
 about:
   id: profile
   title: Perfil
@@ -53,13 +53,6 @@ about:
       (Terraform, Pulumi), Grafana y React, además de soluciones de integración, workflows y Salesforce
       para la división comercial. Antes diseñé la arquitectura de plataformas cloud basadas en Spring,
       RabbitMQ y las APIs de Microsoft Graph, y un conector bidireccional Salesforce–JIRA.
-  facts:
-    - value: "2006"
-      label: desarrollando software profesionalmente desde
-    - value: Java · Spring Boot · AWS
-      label: microservicios en idealo
-    - value: "2.º en Perú"
-      label: ACM-ICPC Regional Contest, 2004
 
 # Sección de contacto al final de la página
 contact:

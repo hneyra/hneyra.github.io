@@ -8,7 +8,7 @@ layout: default
 <section id="{{ about.id }}" class="section section-profile" aria-labelledby="{{ about.id }}-title">
   <div class="container">
     <h2 id="{{ about.id }}-title" class="section-title">{{ about.title }}</h2>
-    <div class="profile">
+    <div class="profile{% if about.facts.size > 0 %} has-facts{% endif %}">
       <div class="profile-text">
         {%- for paragraph in about.paragraphs %}
         <p>{{ paragraph }}</p>
